@@ -21,8 +21,8 @@ export class DashboardComponent implements OnInit {
       res => {
         //console.log(JSON.parse(res._body))
         if(res['_body']){
-          console.log(JSON.parse(JSON.parse(res['_body']).body));
-          this.searchResult = JSON.parse(JSON.parse(res['_body']).body);
+          //console.log(JSON.parse(JSON.parse(res['_body']).body));
+          this.searchResult = JSON.parse(JSON.parse(res['_body']));
         }
       }); 
   }
