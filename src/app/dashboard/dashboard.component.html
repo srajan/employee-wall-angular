@@ -19,7 +19,7 @@
                           <tbody>
                               <tr *ngFor="let result of searchResult">
                                   
-                                  <td>{{result.name}}</td>
+                                  <td><a [attr.href]="'http://localhost:4200/user-profile?user=' + result.name">{{result.name}}</a></td>
                                   <td>{{result.skill}}</td>
                                   
                               </tr>
