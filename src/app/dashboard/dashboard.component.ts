@@ -15,8 +15,9 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {  }
 
-  search (){
-    let url = `${this.apiRoot}search?searchKey=` + this.serial;
+  search (query){
+    this.serial = query;
+    let url = `${this.apiRoot}search?searchKey=` + query;
     this.http.get(url).subscribe(
       res => {
         //console.log(JSON.parse(res._body))
@@ -27,3 +28,7 @@ export class DashboardComponent implements OnInit {
       }); 
   }
 }
+
+$('#skillAnchor').click(function(e){
+    e.preventDefault()
+})

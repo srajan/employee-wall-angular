@@ -4,8 +4,8 @@
       
       <div class="row">
           <div class="col-lg-6 col-md-12 navbar-form mx-auto">
-            <input [(ngModel)]="serial" (keyup.enter)="search()" type="text" class="form-control" placeholder="Search by skill or employee name">
-            <button (click)="search()" class="btn btn-danger pull-right mat-raised-button">Search</button>
+            <input [(ngModel)]="serial" (keyup.enter)="search(serial)" type="text" class="form-control" placeholder="Search by skill or employee name">
+            <button (click)="search(serial)" class="btn btn-danger pull-right mat-raised-button">Search</button>
           </div><br><br>
           <div class="col-lg-12 col-md-12">
               <div class="card">
@@ -20,7 +20,7 @@
                               <tr *ngFor="let result of searchResult">
                                   
                                   <td><a [attr.href]="'http://localhost:4200/user-profile?user=' + result.name">{{result.name}}</a></td>
-                                  <td>{{result.skill}}</td>
+                                  <td><a id="skillAnchor" (click)="search(result.skill)">{{result.skill}}</a></td>
                                   
                               </tr>
                           </tbody>
