@@ -4,7 +4,7 @@
       
       <div class="row">
           <div class="col-lg-6 col-md-12 navbar-form mx-auto">
-            <input [(ngModel)]="serial" type="text" class="form-control" placeholder="Search by skill or employee name">
+            <input [(ngModel)]="serial" (keyup.enter)="search()" type="text" class="form-control" placeholder="Search by skill or employee name">
             <button (click)="search()" class="btn btn-danger pull-right mat-raised-button">Search</button>
           </div><br><br>
           <div class="col-lg-12 col-md-12">
