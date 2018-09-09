@@ -20,7 +20,40 @@
                   </div>
               </div>
           </div>
-          <button class="btn btn-danger mat-raised-button mx-auto">Add Skill</button>
+
+           <!-- open a modal window by clicking button-->
+          <button class="btn btn-danger mat-raised-button mx-auto" data-toggle="modal" data-target="#bootstrapModel">Add Skill</button>
+
+          <!-- Modal section -->
+          <div id="bootstrapModel" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">Add Skill </h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+          <!-- model body section -->
+                <div class="modal-body">
+                  <input [(ngModel)]="skillToBeAdded" type="text" class="form-control" placeholder="Add a skill">
+
+                  <ul>
+                    <li>
+                      <button>
+                              <span>Data Structures</span>
+                      </button>
+                      
+                    </li>
+                  </ul>
+                </div>
+                <div class="modal-footer">
+                  <button (click)="addSkill()" class="btn btn-danger" data-dismiss="modal">Add Skill</button>
+                  <button class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <!-- profile page -->
           <!-- <div class="col-md-4">
               <div class="card card-profile">

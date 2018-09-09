@@ -18,8 +18,9 @@
                           
                           <tbody>
                               <tr *ngFor="let result of searchResult">
-                                  
-                                  <td><a [attr.href]="'http://employee-wall-test1.s3-website.ap-south-1.amazonaws.com/user-profile?user=' + result.name">{{result.name}}</a></td>
+                                  <!-- attr.href to be made localhost:4200 for local development -->
+                                  <!-- attr.href to be made employee-wall-test1.s3-website.ap-south-1.amazonaws.com for deployment -->
+                                  <td><a [attr.href]="'http://localhost:4200/user-profile?user=' + result.name">{{result.name}}</a></td>
                                   <td><a id="skillAnchor" (click)="search(result.skill)">{{result.skill}}</a></td>
                                   
                               </tr>

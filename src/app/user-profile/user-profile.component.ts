@@ -11,6 +11,8 @@ export class UserProfileComponent implements OnInit {
 	searchResult = '';
 	apiRoot: string = "https://d08sxmexn3.execute-api.ap-south-1.amazonaws.com/dev/employee-wall/";
 	user = '';
+	skillToBeAdded = '';
+	userId = '';//TODO: need an api to get userId for given user
 
 	constructor(private activatedRoute: ActivatedRoute, private http: Http) {
 		this.activatedRoute.queryParams.subscribe(params => {
@@ -36,4 +38,28 @@ export class UserProfileComponent implements OnInit {
       }); 
   }
 
+  addSkill() {
+  	console.log('addskill() was called');
+  	console.log('skill to be added : %s',this.skillToBeAdded);
+  	let addSkillBody = {
+  		name: this.user,
+  		userId: this.userId,
+  		skill: this.skillToBeAdded
+  	};
+  	let cpHeaders = new Headers({ 'Content-type':'application/json' });
+	let options = new RequestOptions({ headers: cpHeaders });
+	let addSkillURL = `${this.apiRoot}add-skill`;
+  	this.http.post(addSkillURL, addSkillBody).subscribe(
+  			res => {
+  						console.log(res);
+  						this.search(this.user);
+  			},
+  			err => {
+  						console.log('error occured while adding skill...');
+  						console.log(err);
+  						this.search(this.user);
+  			}
+  		);
+  	this.skillToBeAdded = ''; 
+  }
 }
