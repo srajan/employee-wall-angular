@@ -12,7 +12,7 @@ export class UserProfileComponent implements OnInit {
 	apiRoot: string = "https://d08sxmexn3.execute-api.ap-south-1.amazonaws.com/dev/employee-wall/";
 	user = '';
 	skillToBeAdded = '';
-	userId = '';//TODO: need an api to get userId for given user
+	// userId = '2';//TODO: need an api to get userId for given user
 
 	constructor(private activatedRoute: ActivatedRoute, private http: Http) {
 		this.activatedRoute.queryParams.subscribe(params => {
@@ -43,7 +43,6 @@ export class UserProfileComponent implements OnInit {
   	console.log('skill to be added : %s',this.skillToBeAdded);
   	let addSkillBody = {
   		name: this.user,
-  		userId: this.userId,
   		skill: this.skillToBeAdded
   	};
   	let cpHeaders = new Headers({'Content-type':'application/json'});
