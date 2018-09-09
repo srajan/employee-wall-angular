@@ -46,7 +46,7 @@ export class UserProfileComponent implements OnInit {
   		userId: this.userId,
   		skill: this.skillToBeAdded
   	};
-  	let cpHeaders = new Headers({ 'Content-type':'application/json' });
+  	let cpHeaders = new Headers({'Content-type':'application/json'});
 	let options = new RequestOptions({ headers: cpHeaders });
 	let addSkillURL = `${this.apiRoot}add-skill`;
 
@@ -63,5 +63,14 @@ export class UserProfileComponent implements OnInit {
   			}
   		);
   	this.skillToBeAdded = ''; 
+  }
+
+  deleteSkill(delSkill){
+  	let isConfirm = confirm("Do you want to remove " + delSkill + " from skill list?");
+
+  	if(isConfirm){
+  		//api call to delete delSkill
+  		//and refresh skill list
+  	}
   }
 }

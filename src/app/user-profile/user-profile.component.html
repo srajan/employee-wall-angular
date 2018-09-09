@@ -12,9 +12,9 @@
                               <th>Skills</th>
                           </thead>
                           <tbody>
-                              <tr *ngFor="let result of searchResult">
-                                  <td>{{result.skill}}</td>
-                              </tr>
+                            <tr *ngFor="let result of searchResult">
+                              <td>{{result.skill}} &nbsp;&nbsp;<span (click)="deleteSkill(result.skill)">&#10006;</span></td>
+                            </tr>
                           </tbody>
                       </table>
                   </div>
