@@ -35,6 +35,8 @@ export class UserProfileComponent implements OnInit {
           this.searchResult = JSON.parse(JSON.parse(res['_body']));
           console.log(this.searchResult);
         }
+      }, err => {
+      	console.log("error! problem with GET " + url);
       }); 
   }
 
@@ -69,7 +71,15 @@ export class UserProfileComponent implements OnInit {
 
   	if(isConfirm){
   		//api call to delete delSkill
-  		//and refresh skill list
+  		let url = `${this.apiRoot}update-skill?name=` + this.user + `&skill=` + delSkill;
+  		this.http.get(url).subscribe(
+	      res => {
+	        console.log(res);
+	        //refresh skill list
+	        this.search(this.user);
+	      }, err => {
+	      	console.log("error! problem with GET " + url);
+	      }); 
   	}
   }
 }
