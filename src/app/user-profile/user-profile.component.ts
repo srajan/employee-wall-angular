@@ -49,6 +49,8 @@ export class UserProfileComponent implements OnInit {
   	let cpHeaders = new Headers({ 'Content-type':'application/json' });
 	let options = new RequestOptions({ headers: cpHeaders });
 	let addSkillURL = `${this.apiRoot}add-skill`;
+
+	//refresh the list of skills
   	this.http.post(addSkillURL, addSkillBody).subscribe(
   			res => {
   						console.log(res);
