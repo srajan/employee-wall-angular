@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-dashboard',
