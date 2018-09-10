@@ -2,6 +2,7 @@
 <html>
 <head>
     <base href='/'>
+    <meta name="google-signin-client_id" content="1067194349027-3kcs6jv374ue87e5un06gmhs4ch0fre8.apps.googleusercontent.com">
     <meta charset="utf-8" />
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png" />
     <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
@@ -15,10 +16,22 @@
     <!--     Fonts and icons     -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR-KEY-HERE"></script>
+    <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR-KEY-HERE"></script> -->
+
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script type="text/javascript">
+      function onSignIn(googleUser) {
+        var profile = googleUser.getBasicProfile();
+        console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+        console.log('Name: ' + profile.getName());
+        console.log('Image URL: ' + profile.getImageUrl());
+        console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+        }
+    </script>
 
 </head>
 <body>
+  <div class="g-signin2" id ="1234" data-onsuccess="onSignIn"></div>
   <app-root>
     <div class="loader">
       <svg class="circular" viewBox="25 25 50 50">
