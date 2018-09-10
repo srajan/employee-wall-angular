@@ -16,7 +16,7 @@ export class UserProfileComponent implements OnInit {
 
 	constructor(private activatedRoute: ActivatedRoute, private http: Http) {
 		this.activatedRoute.queryParams.subscribe(params => {
-		    this.user = (typeof params['user']) !== "undefined" ? params['user'] : 'farhat';
+		    this.user = (typeof params['user']) !== "undefined" ? params['user'] : 'No User provided';
 		    console.log(this.user); // Print the parameter to the console. 
 
 	    	this.search(this.user);
