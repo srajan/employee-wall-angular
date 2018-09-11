@@ -1,7 +1,7 @@
 <div class="main-content">
   <div class="container-fluid">
       <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-8">
               <div class="card">
                   <div class="card-header card-header-danger">
                       <h4 class="card-title">{{user}}</h4>
@@ -19,10 +19,10 @@
                       </table>
                   </div>
               </div>
+            <button class="btn btn-danger mat-raised-button mx-auto" data-toggle="modal" data-target="#bootstrapModel">Add Skill</button>
           </div>
 
            <!-- open a modal window by clicking button-->
-          <button class="btn btn-danger mat-raised-button mx-auto" data-toggle="modal" data-target="#bootstrapModel">Add Skill</button>
 
           <!-- Modal section -->
           <div id="bootstrapModel" class="modal fade" role="dialog">
@@ -36,13 +36,11 @@
           <!-- model body section -->
                 <div class="modal-body">
                   <input [(ngModel)]="skillToBeAdded" type="text" class="form-control" placeholder="Add a skill">
-
                   <!-- <ul>
                     <li>
                       <button>
                               <span>Data Structures</span>
                       </button>
-                      
                     </li>
                   </ul> -->
                 </div>
@@ -54,24 +52,80 @@
             </div>
           </div>
 
+          <!--Edit Details Modal section -->
+          <div id="personalDetailsEditModel" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">Edit Personal Details </h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+          <!-- model body section -->
+                <div class="modal-body">
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                  </div>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="inputGroup-sizing-default">Github Id</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                  </div>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="inputGroup-sizing-default">About me</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                  </div>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Resume</span>
+                    </div>
+                    <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="inputGroupFile01">
+                      <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button (click)="addSkill()" class="btn btn-danger" data-dismiss="modal">Save</button>
+                  <button class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <!-- profile page -->
-          <!-- <div class="col-md-4">
+          <div class="col-md-4">
               <div class="card card-profile">
-                  <div class="card-avatar">
-                      <a href="#pablo">
+                  <!-- <div class="card-avatar">
+                      <a>
                           <img class="img" src="../assets/img/faces/marc.jpg" />
                       </a>
-                  </div>
+                  </div> -->
                   <div class="card-body">
-                      <h6 class="card-category text-gray">CEO / Co-Founder</h6>
-                      <h4 class="card-title">Alec Thompson</h4>
                       <p class="card-description">
-                          Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+                          Small description goes here, here and here!
                       </p>
-                      <a href="#pablo" class="btn btn-danger btn-round">Follow</a>
+                      <h6 class="card-category text-gray">someone@kickdrumtech.com</h6>
+                      <h5 class="card-title">
+                        <a href="http://github.com/FarhatRV" target="_blank">
+                            <img class="img" src="../assets/img/github-mark.png" />githubid
+                        </a>
+                      </h5>
+                      <h5 class="card-title">
+                        <a href="http://resumeDownloadLink" target="_blank">
+                            <span class="glyphicon glyphicon-download-alt"></span>resume
+                        </a>
+                      </h5>
+                      <a class="btn btn-danger btn-round" data-toggle="modal" data-target="#personalDetailsEditModel">Edit</a>
                   </div>
               </div>
-          </div> -->
+          </div>
       </div>
   </div>
 </div>
