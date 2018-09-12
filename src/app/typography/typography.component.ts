@@ -1,4 +1,6 @@
 import { Component, OnInit, ElementRef, AfterViewInit} from '@angular/core';
+import { Router } from "@angular/router";
+
 declare const gapi: any;
 
 @Component({
@@ -7,8 +9,8 @@ declare const gapi: any;
   styleUrls: ['./typography.component.css']
 })
 export class TypographyComponent implements OnInit {
-
-  constructor() { }
+	toggle = false;
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
@@ -41,14 +43,15 @@ export class TypographyComponent implements OnInit {
 		    console.log(emailDomain);
 		    console.log(typeof(emailDomain));
 		    if(emailDomain.includes("kickdrumtech.com") || emailDomain.includes("kickdrum.com")){
-		    	console.log("Valid Kickdrum User.");
+		 	   	console.log("Valid Kickdrum User.");
+	 	   		this.router.navigate(['/dashboard']);
 		    }else{
 		    	console.log("Invalid User...");
 		    }
 
 
 		  }, (error) => {
-		    alert(JSON.stringify(error, undefined, 2));
+		    console.log(JSON.stringify(error, undefined, 2));
 		  });
 		}
 
