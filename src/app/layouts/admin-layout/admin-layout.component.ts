@@ -1,8 +1,8 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { Location, LocationStrategy, PathLocationStrategy, PopStateEvent } from '@angular/common';
 import 'rxjs/add/operator/filter';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
-import { Router, NavigationEnd, NavigationStart } from '@angular/router';
+import { Router, NavigationEnd, NavigationStart, ActivatedRoute, RouterEvent } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import PerfectScrollbar from 'perfect-scrollbar';
 
@@ -15,8 +15,16 @@ export class AdminLayoutComponent implements OnInit {
   private _router: Subscription;
   private lastPoppedUrl: string;
   private yScrollStack: number[] = [];
+  routerUrl = '';
 
-  constructor( public location: Location, private router: Router) {}
+  constructor( public location: Location, public router: Router, route:ActivatedRoute, private cdRef:ChangeDetectorRef) {
+    router.events.filter(e => e instanceof RouterEvent).subscribe(e => {
+      //console.log(e.urlAfterRedirects);
+      if(e['url']){this.routerUrl = e['url'];}
+
+      this.cdRef.detectChanges();
+    });
+  }
 
   ngOnInit() {
       const isWindows = navigator.platform.indexOf('Win') > -1 ? true : false;
