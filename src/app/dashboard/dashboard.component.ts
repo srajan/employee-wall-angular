@@ -17,6 +17,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {  }
 
   search (query){
+
     this.serial = query;
     let url = `${this.apiRoot}search?searchKey=` + query;
     this.http.get(url).subscribe(
@@ -26,7 +27,11 @@ export class DashboardComponent implements OnInit {
           //console.log(JSON.parse(JSON.parse(res['_body']).body));
           this.searchResult = JSON.parse(JSON.parse(res['_body']));
         }
-      }); 
+      },
+      err => {
+        console.log("/search failed!");
+      }
+      ); 
   }
 }
 

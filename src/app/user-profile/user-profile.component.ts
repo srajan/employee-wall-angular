@@ -12,6 +12,17 @@ export class UserProfileComponent implements OnInit {
 	apiRoot: string = "https://d08sxmexn3.execute-api.ap-south-1.amazonaws.com/dev/employee-wall/";
 	user = '';
 	skillToBeAdded = '';
+  fullNameModel = '';
+  officialEmailModel = '';
+  AddressLine1Model = '';
+  AddressLine2Model = '';
+  primaryMobileModel = '';
+  emergencyContactModel = '';
+  joiningDateModel = '';
+  bloodGroupModel = '';
+  githubIdModel = '';
+  briefModel = '';
+
 	// userId = '2';//TODO: need an api to get userId for given user
 
 	constructor(private activatedRoute: ActivatedRoute, private http: Http) {
@@ -81,5 +92,34 @@ export class UserProfileComponent implements OnInit {
 	      	console.log("error! problem with GET " + url);
 	      }); 
   	}
+  }
+
+  updateDetails(){
+    let updateDetailsBody = {
+      fullName : this.fullNameModel,
+      officialEmail : this.officialEmailModel,
+      permanentAddress : this.AddressLine1Model + this.AddressLine2Model,
+      primaryContact : this.primaryMobileModel,
+      emergencyContact : this.emergencyContactModel,
+      joiningDate : this.joiningDateModel,
+      bloodGroup : this.bloodGroupModel,
+      githubId : this.githubIdModel,
+      brief : this.briefModel
+    };
+    let cpHeaders = new Headers({'Content-type':'application/json'});
+    let options = new RequestOptions({ headers: cpHeaders });
+    let updateDetailsURL = `${this.apiRoot}update-user-details`;
+
+    this.http.post(updateDetailsURL, updateDetailsBody).subscribe(
+      res => {
+            console.log(res);
+            this.search(this.user);
+      },
+      err => {
+            console.log('error occured while adding skill...');
+            console.log(err);
+            this.search(this.user);
+      }
+    );
   }
 }

@@ -1,24 +1,106 @@
 <div class="main-content">
   <div class="container-fluid">
       <div class="row">
-          <div class="col-md-8">
+          <div class="col-md-9 mx-auto">
               <div class="card">
                   <div class="card-header card-header-danger">
                       <h4 class="card-title">{{user}}</h4>
                   </div>
                   <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Full Name</span>
+                          </div>
+                          <span>Srajan Dongre</span>
+                        </div>
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Address Line 1</span>
+                          </div>
+                          <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                        </div>
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Primary Mobile No.</span>
+                          </div>
+                          <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                        </div>
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Joining Date</span>
+                          </div>
+                          <input type="date" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                        </div>
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Github Id</span>
+                          </div>
+                          <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                        </div>
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Latest Resume</span>
+                          </div>
+                          <input type="file" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Official Email</span>
+                          </div>
+                          <input type="email" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                        </div>
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Address Line 2</span>
+                          </div>
+                          <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                        </div>
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Emergency Contact No.</span>
+                          </div>
+                          <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                        </div>
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Blood group</span>
+                          </div>
+                          <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                        </div>
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Brief About Yourself</span>
+                          </div>
+                          <!-- <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"> -->
+                        </div>
+                        <div class="input-group mb-3">
+                          <textarea class="form-control border"></textarea> 
+                        </div>
+                        <!-- <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Skill set</span>
+                          </div>
+                          <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                        </div> -->
+                      </div>
+                  </div>
                     <table class="table table-hover">
                           <thead class="text-danger">
                               <th>Skills</th>
                           </thead>
                           <tbody>
-                            <tr *ngFor="let result of searchResult">
-                              <td>{{result.skill}} &nbsp;&nbsp;<span (click)="deleteSkill(result.skill)">&#10006;</span></td>
+                            <tr>
+                              <td *ngFor="let result of searchResult">{{result.skill}} &nbsp;&nbsp;<span (click)="deleteSkill(result.skill)">&#10006;</span></td>
                             </tr>
                           </tbody>
                       </table>
                   </div>
               </div>
+            <button class="btn btn-danger mat-raised-button mx-auto" data-toggle="modal" data-target="#personalDetailsEditModel">Edit</button>
             <button class="btn btn-danger mat-raised-button mx-auto" data-toggle="modal" data-target="#bootstrapModel">Add Skill</button>
           </div>
 
@@ -69,31 +151,31 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-default">Full Name</span>
                         </div>
-                        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                        <input [(ngModel)]="fullNameModel" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                       </div>
                       <div class="input-group mb-3">
                         <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-default">Address Line 1</span>
                         </div>
-                        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                        <input [(ngModel)]="AddressLine1Model" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                       </div>
                       <div class="input-group mb-3">
                         <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-default">Primary Mobile No.</span>
                         </div>
-                        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                        <input [(ngModel)]="primaryMobileModel" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                       </div>
                       <div class="input-group mb-3">
                         <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-default">Joining Date</span>
                         </div>
-                        <input type="date" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                        <input [(ngModel)]="joiningDateModel" type="date" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                       </div>
                       <div class="input-group mb-3">
                         <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-default">Github Id</span>
                         </div>
-                        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                        <input [(ngModel)]="githubIdModel" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                       </div>
                       <div class="input-group mb-3">
                         <div class="input-group-prepend">
@@ -107,25 +189,25 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-default">Official Email</span>
                         </div>
-                        <input type="email" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                        <input [(ngModel)]="officialEmailModel" type="email" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                       </div>
                       <div class="input-group mb-3">
                         <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-default">Address Line 2</span>
                         </div>
-                        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                        <input [(ngModel)]="AddressLine2Model" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                       </div>
                       <div class="input-group mb-3">
                         <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-default">Emergency Contact No.</span>
                         </div>
-                        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                        <input [(ngModel)]="emergencyContactModel" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                       </div>
                       <div class="input-group mb-3">
                         <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-default">Blood group</span>
                         </div>
-                        <input type="date" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                        <input [(ngModel)]="bloodGroupModel" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                       </div>
                       <div class="input-group mb-3">
                         <div class="input-group-prepend">
@@ -134,33 +216,28 @@
                         <!-- <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"> -->
                       </div>
                       <div class="input-group mb-3">
-                        <textarea class="form-control border"></textarea> 
+                        <textarea [(ngModel)]="briefModel" class="form-control border"></textarea> 
                       </div>
-                      <div class="input-group mb-3">
+                      <!-- <div class="input-group mb-3">
                         <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-default">Skill set</span>
                         </div>
                         <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-                      </div>
+                      </div> -->
                     </div>
                   </div>
                 </div>
                 <div class="modal-footer">
-                  <button (click)="addSkill()" class="btn btn-danger" data-dismiss="modal">Save</button>
-                  <button class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button (click)="updateDetails()" class="btn btn-danger" data-dismiss="modal">Save</button>
+                  <!-- <button class="btn btn-default" data-dismiss="modal">Close</button> -->
                 </div>
               </div>
             </div>
           </div>
 
           <!-- profile page -->
-          <div class="col-md-4">
+          <!-- <div class="col-md-4">
               <div class="card card-profile">
-                  <!-- <div class="card-avatar">
-                      <a>
-                          <img class="img" src="../assets/img/faces/marc.jpg" />
-                      </a>
-                  </div> -->
                   <div class="card-body">
                       <p class="card-description">
                           Small description goes here, here and here!
@@ -179,7 +256,7 @@
                       <a class="btn btn-danger btn-round" data-toggle="modal" data-target="#personalDetailsEditModel">Edit</a>
                   </div>
               </div>
-          </div>
+          </div> -->
       </div>
   </div>
 </div>
